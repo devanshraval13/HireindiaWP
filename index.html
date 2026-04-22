@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hire India | Find Your Dream Job</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --blue: #1a56db;
+  --blue-light: #3b82f6;
+  --accent: #f59e0b;
+  --accent2: #10b981;
+  --bg: #f8faff;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+header{
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  padding:0 60px;
+  height:70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 20px rgba(0,0,0,0.06);
+}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--navy)}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+nav{display:flex;align-items:center;gap:6px}
+nav a{color:var(--muted);font-weight:500;padding:8px 14px;border-radius:8px;transition:.2s;font-size:15px}
+nav a:hover,nav a.active{color:var(--blue);background:#eff6ff}
+.header-actions{display:flex;align-items:center;gap:10px}
+.btn-outline{border:1.5px solid var(--blue);color:var(--blue);padding:8px 20px;border-radius:25px;font-weight:600;font-size:14px;transition:.2s;font-family:'DM Sans',sans-serif}
+.btn-outline:hover{background:var(--blue);color:#fff}
+.btn-primary{background:var(--blue);color:#fff;padding:9px 22px;border-radius:25px;font-weight:600;font-size:14px;transition:.2s;font-family:'DM Sans',sans-serif;border:none;cursor:pointer}
+.btn-primary:hover{background:#1447be;transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,86,219,0.35)}
+.user-menu{display:none;align-items:center;gap:10px}
+.user-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;cursor:pointer}
+.user-name{font-weight:600;font-size:14px;color:var(--text)}
+.logout-btn{color:var(--muted);font-size:13px;cursor:pointer;padding:6px 12px;border-radius:8px;transition:.2s;border:1px solid var(--border);background:none}
+.logout-btn:hover{color:#ef4444;border-color:#ef4444}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#1a2f5e 50%,#0a3d7a 100%);
+  padding:100px 60px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-200px;right:-200px;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(59,130,246,0.2) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-100px;left:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(245,158,11,0.1) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:var(--accent);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero h1{font-family:'Syne',sans-serif;font-size:54px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:rgba(255,255,255,0.75);font-size:17px;line-height:1.7;margin-bottom:36px}
+.search-box{background:#fff;border-radius:16px;padding:8px;display:flex;gap:8px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.search-box input{flex:1;padding:14px 18px;border:none;outline:none;font-size:15px;border-radius:10px;font-family:'DM Sans',sans-serif;color:var(--text);background:#f8faff}
+.search-box .search-btn{background:var(--blue);color:#fff;border:none;padding:14px 28px;border-radius:10px;cursor:pointer;font-weight:700;font-size:15px;font-family:'Syne',sans-serif;transition:.2s;white-space:nowrap}
+.search-box .search-btn:hover{background:#1447be}
+.hero-tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.hero-tag-item{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:6px 14px;border-radius:20px;font-size:13px;border:1px solid rgba(255,255,255,0.15);cursor:pointer;transition:.2s}
+.hero-tag-item:hover{background:rgba(255,255,255,0.2)}
+.hero-visual{position:relative}
+.hero-cards{display:grid;gap:16px}
+.hero-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:20px 24px;color:#fff;animation:floatUp 0.6s ease both}
+.hero-card:nth-child(1){animation-delay:0.1s}
+.hero-card:nth-child(2){animation-delay:0.2s}
+.hero-card:nth-child(3){animation-delay:0.3s}
+@keyframes floatUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.hero-card h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700}
+.hero-card-badge{background:var(--accent2);color:#fff;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.hero-card p{font-size:13px;opacity:.7;margin-bottom:8px}
+.hero-card-salary{color:var(--accent);font-weight:700;font-size:15px}
+
+/* TRUST BAR */
+.trust{background:#fff;padding:30px 60px;border-bottom:1px solid var(--border)}
+.trust-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.trust-item h3{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--blue);margin-bottom:4px}
+.trust-item p{font-size:13px;color:var(--muted);font-weight:500}
+
+/* SECTIONS */
+section{padding:80px 60px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{color:var(--blue);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.section-sub{color:var(--muted);font-size:16px;max-width:600px;line-height:1.7}
+
+/* FEATURED JOBS */
+.jobs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-top:40px}
+.job-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+.job-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-light));opacity:0;transition:.3s}
+.job-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(26,86,219,0.12);border-color:var(--blue-light)}
+.job-card:hover::before{opacity:1}
+.job-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+.job-logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);display:flex;align-items:center;justify-content:center;font-size:20px}
+.job-badge{background:#f0fdf4;color:var(--accent2);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid #bbf7d0}
+.job-card h4{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.job-card-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.job-meta-tag{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--muted)}
+.job-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border)}
+.job-salary{font-family:'Syne',sans-serif;font-weight:700;color:var(--blue);font-size:16px}
+.apply-btn{background:var(--blue);color:#fff;border:none;padding:9px 20px;border-radius:20px;cursor:pointer;font-weight:600;font-size:13px;font-family:'DM Sans',sans-serif;transition:.2s}
+.apply-btn:hover{background:#1447be}
+
+/* CATEGORIES */
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:40px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center;cursor:pointer;transition:.3s}
+.cat-card:hover{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:var(--blue-light);transform:translateY(-4px)}
+.cat-icon{font-size:32px;margin-bottom:12px}
+.cat-card h4{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.cat-card p{font-size:12px;color:var(--muted)}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--navy),#1a3a6b);margin:0 60px;border-radius:24px;padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cta-section h2{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:#fff;margin-bottom:12px}
+.cta-section p{color:rgba(255,255,255,0.7);font-size:16px;line-height:1.7}
+.cta-btns{display:flex;gap:14px;flex-wrap:wrap}
+.cta-btn-white{background:#fff;color:var(--navy);padding:14px 28px;border-radius:25px;font-weight:700;font-size:15px;transition:.2s}
+.cta-btn-white:hover{box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+.cta-btn-ghost{border:2px solid rgba(255,255,255,0.4);color:#fff;padding:14px 28px;border-radius:25px;font-weight:700;font-size:15px;transition:.2s}
+.cta-btn-ghost:hover{background:rgba(255,255,255,0.1)}
+.cta-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cta-stat{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:24px}
+.cta-stat h3{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent);margin-bottom:6px}
+.cta-stat p{color:rgba(255,255,255,0.7);font-size:14px}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:40px}
+.testimonial{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px}
+.testimonial-text{font-size:15px;line-height:1.7;color:var(--text);margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px}
+.testimonial-info h5{font-weight:700;font-size:15px;color:var(--navy)}
+.testimonial-info p{font-size:13px;color:var(--muted)}
+.stars{color:var(--accent);font-size:14px;margin-bottom:12px}
+
+/* FOOTER */
+footer{background:var(--navy);color:#fff;padding:60px 60px 30px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.footer-brand .logo{margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.footer-brand p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;max-width:280px;margin-bottom:20px}
+.footer-social{display:flex;gap:10px}
+.social-btn{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:#fff;transition:.2s;cursor:pointer;font-size:15px;border:none}
+.social-btn:hover{background:var(--blue)}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:18px;color:#fff}
+.footer-col a{display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:.2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{padding-top:30px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{color:rgba(255,255,255,0.5);font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-visual{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  header{padding:0 20px}
+  nav{display:none}
+  .hero{padding:60px 20px}
+  .hero h1{font-size:38px}
+  section{padding:60px 20px}
+  .trust{padding:20px}
+  .trust-inner{grid-template-columns:repeat(2,1fr)}
+  .cta-section{margin:0 20px;padding:40px 24px;grid-template-columns:1fr}
+  footer{padding:40px 20px 20px}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero h1{font-size:30px}
+  .search-box{flex-direction:column}
+}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:500;z-index:9999;transform:translateY(100px);opacity:0;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,0.3);display:flex;align-items:center;gap:10px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{border-left:4px solid var(--accent2)}
+.toast.info{border-left:4px solid var(--blue)}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+.mobile-nav{display:none;position:fixed;top:70px;left:0;right:0;background:#fff;padding:20px;border-bottom:1px solid var(--border);z-index:999;flex-direction:column;gap:4px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{padding:12px 16px;border-radius:10px;font-weight:500;color:var(--text);transition:.2s}
+.mobile-nav a:hover{background:#f1f5f9;color:var(--blue)}
+@media(max-width:768px){.hamburger{display:flex}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">H</div>
+    Hire India
+  </div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="job.html">Jobs</a>
+    <a href="company.html">Companies</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-actions" id="headerActions">
+    <a href="login.html" class="btn-outline">Login</a>
+    <a href="signup.html" class="btn-primary">Register</a>
+  </div>
+  <div class="user-menu" id="userMenu">
+    <div class="user-avatar" id="userAvatar"></div>
+    <span class="user-name" id="userName"></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+  <div class="hamburger" onclick="toggleMobileNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">🏠 Home</a>
+  <a href="job.html">💼 Jobs</a>
+  <a href="company.html">🏢 Companies</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="contact.html">📞 Contact</a>
+  <a href="login.html" id="mobileLogin">🔐 Login</a>
+  <a href="signup.html" id="mobileRegister">✍️ Register</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">✨ India's #1 Job Portal 2026</div>
+      <h1>Find Your <span>Dream Career</span> Today</h1>
+      <p>Connect with 50,000+ verified jobs from top companies across India. Your next big opportunity is just one search away.</p>
+      <div class="search-box">
+        <input type="text" id="heroSearch" placeholder="Job title, skill or company...">
+        <input type="text" id="heroLocation" placeholder="City or Remote">
+        <button class="search-btn" onclick="heroSearch()">🔍 Search Jobs</button>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag-item" onclick="quickSearch('Frontend Developer')">Frontend Dev</span>
+        <span class="hero-tag-item" onclick="quickSearch('Data Scientist')">Data Science</span>
+        <span class="hero-tag-item" onclick="quickSearch('UI Designer')">UI/UX Design</span>
+        <span class="hero-tag-item" onclick="quickSearch('Product Manager')">Product</span>
+        <span class="hero-tag-item" onclick="quickSearch('DevOps')">DevOps</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <h4>🚀 Frontend Developer</h4>
+            <span class="hero-card-badge">NEW</span>
+          </div>
+          <p>Google • Bengaluru • Full-time</p>
+          <span class="hero-card-salary">₹14-18 LPA</span>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <h4>📊 Data Scientist</h4>
+            <span class="hero-card-badge">HOT</span>
+          </div>
+          <p>Amazon • Mumbai • Full-time</p>
+          <span class="hero-card-salary">₹22-28 LPA</span>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <h4>🎨 Product Designer</h4>
+            <span class="hero-card-badge">REMOTE</span>
+          </div>
+          <p>Swiggy • Remote • Full-time</p>
+          <span class="hero-card-salary">₹9-14 LPA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><h3>5M+</h3><p>Job Seekers</p></div>
+    <div class="trust-item"><h3>50K+</h3><p>Active Jobs</p></div>
+    <div class="trust-item"><h3>10K+</h3><p>Companies</p></div>
+    <div class="trust-item"><h3>98%</h3><p>Success Rate</p></div>
+  </div>
+</div>
+
+<!-- FEATURED JOBS -->
+<section style="background:#fff">
+  <div class="section-inner">
+    <p class="section-label">🔥 Hot Right Now</p>
+    <h2 class="section-title">Featured Jobs</h2>
+    <p class="section-sub">Handpicked opportunities from India's top tech companies and startups.</p>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-logo">🔵</div>
+          <span class="job-badge">New</span>
+        </div>
+        <h4>Frontend Developer</h4>
+        <div class="job-card-meta">
+          <span class="job-meta-tag">🏢 Google</span>
+          <span class="job-meta-tag">📍 Bengaluru</span>
+          <span class="job-meta-tag">⏱ Full-time</span>
+        </div>
+        <div class="job-card-footer">
+          <span class="job-salary">₹14-18 LPA</span>
+          <button class="apply-btn" onclick="applyForJob('Frontend Developer')">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-logo">🟡</div>
+          <span class="job-badge">Hot</span>
+        </div>
+        <h4>Backend Engineer</h4>
+        <div class="job-card-meta">
+          <span class="job-meta-tag">🏢 Microsoft</span>
+          <span class="job-meta-tag">📍 Hyderabad</span>
+          <span class="job-meta-tag">⏱ Full-time</span>
+        </div>
+        <div class="job-card-footer">
+          <span class="job-salary">₹18-24 LPA</span>
+          <button class="apply-btn" onclick="applyForJob('Backend Engineer')">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-logo">🟢</div>
+          <span class="job-badge">Remote</span>
+        </div>
+        <h4>UI/UX Designer</h4>
+        <div class="job-card-meta">
+          <span class="job-meta-tag">🏢 Swiggy</span>
+          <span class="job-meta-tag">📍 Remote</span>
+          <span class="job-meta-tag">⏱ Full-time</span>
+        </div>
+        <div class="job-card-footer">
+          <span class="job-salary">₹9-14 LPA</span>
+          <button class="apply-btn" onclick="applyForJob('UI/UX Designer')">Apply Now</button>
+        </div>
+      </div>
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-logo">🔴</div>
+          <span class="job-badge">Urgent</span>
+        </div>
+        <h4>Data Scientist</h4>
+        <div class="job-card-meta">
+          <span class="job-meta-tag">🏢 Amazon</span>
+          <span class="job-meta-tag">📍 Mumbai</span>
+          <span class="job-meta-tag">⏱ Full-time</span>
+        </div>
+        <div class="job-card-footer">
+          <span class="job-salary">₹22-28 LPA</span>
+          <button class="apply-btn" onclick="applyForJob('Data Scientist')">Apply Now</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="job.html" class="btn-primary" style="display:inline-block;padding:14px 36px;font-size:15px">View All Jobs →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">🎯 Browse by Field</p>
+    <h2 class="section-title">Job Categories</h2>
+    <p class="section-sub">Explore thousands of jobs across every industry and role type.</p>
+    <div class="categories-grid">
+      <div class="cat-card" onclick="window.location='job.html?cat=tech'">
+        <div class="cat-icon">💻</div>
+        <h4>Technology</h4>
+        <p>12,400+ jobs</p>
+      </div>
+      <div class="cat-card" onclick="window.location='job.html?cat=design'">
+        <div class="cat-icon">🎨</div>
+        <h4>Design</h4>
+        <p>3,200+ jobs</p>
+      </div>
+      <div class="cat-card" onclick="window.location='job.html?cat=finance'">
+        <div class="cat-icon">📈</div>
+        <h4>Finance</h4>
+        <p>5,800+ jobs</p>
+      </div>
+      <div class="cat-card" onclick="window.location='job.html?cat=marketing'">
+        <div class="cat-icon">📢</div>
+        <h4>Marketing</h4>
+        <p>4,100+ jobs</p>
+      </div>
+      <div class="cat-card" onclick="window.location='job.html?cat=hr'">
+        <div class="cat-icon">👥</div>
+        <h4>HR & People</h4>
+        <p>2,700+ jobs</p>
+      </div>
+      <div class="cat-card" onclick="window.location='job.html?cat=data'">
+        <div class="cat-icon">📊</div>
+        <h4>Data & AI</h4>
+        <p>8,900+ jobs</p>
+      </div>
+      <div class="cat-card" onclick="window.location='job.html?cat=ops'">
+        <div class="cat-icon">⚙️</div>
+        <h4>Operations</h4>
+        <p>6,500+ jobs</p>
+      </div>
+      <div class="cat-card" onclick="window.location='job.html?cat=sales'">
+        <div class="cat-icon">🤝</div>
+        <h4>Sales</h4>
+        <p>9,300+ jobs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div style="padding:0 60px 80px;max-width:1320px;margin:auto">
+  <div class="cta-section">
+    <div>
+      <h2>Ready to Start Your Journey?</h2>
+      <p>Join over 5 million professionals who have found their perfect role through Hire India. Create your profile today — it's completely free.</p>
+      <div class="cta-btns" style="margin-top:28px">
+        <a href="signup.html" class="cta-btn-white">Create Free Account</a>
+        <a href="job.html" class="cta-btn-ghost">Browse Jobs</a>
+      </div>
+    </div>
+    <div class="cta-stats">
+      <div class="cta-stat"><h3>200K+</h3><p>Jobs Posted Monthly</p></div>
+      <div class="cta-stat"><h3>4.8★</h3><p>Average Rating</p></div>
+      <div class="cta-stat"><h3>48h</h3><p>Avg. Time to Hire</p></div>
+      <div class="cta-stat"><h3>Free</h3><p>For Job Seekers</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section style="background:#fff">
+  <div class="section-inner">
+    <p class="section-label">💬 Success Stories</p>
+    <h2 class="section-title">What Our Users Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I landed my dream job at a top startup within 3 weeks of signing up. The job matching is incredibly accurate!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">P</div>
+          <div class="testimonial-info"><h5>Priya Sharma</h5><p>Frontend Dev @ Zepto</p></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"As an employer, we've hired 12 engineers through Hire India. The quality of candidates is outstanding."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">R</div>
+          <div class="testimonial-info"><h5>Rahul Mehta</h5><p>CTO @ FinTech Startup</p></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The platform is clean, fast, and the filters actually work! Got 5 interview calls in the first week."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">A</div>
+          <div class="testimonial-info"><h5>Arjun Nair</h5><p>Data Analyst @ CRED</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="color:#fff">
+          <div class="logo-icon">H</div>
+          Hire India
+        </div>
+        <p>India's most trusted job portal connecting talented professionals with top companies since 2020.</p>
+        <div class="footer-social">
+          <button class="social-btn">in</button>
+          <button class="social-btn">tw</button>
+          <button class="social-btn">fb</button>
+          <button class="social-btn">ig</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Job Seekers</h4>
+        <a href="job.html">Browse Jobs</a>
+        <a href="signup.html">Create Profile</a>
+        <a href="#">Resume Builder</a>
+        <a href="#">Career Advice</a>
+        <a href="#">Salary Guide</a>
+      </div>
+      <div class="footer-col">
+        <h4>Employers</h4>
+        <a href="#">Post a Job</a>
+        <a href="company.html">Browse Companies</a>
+        <a href="#">Pricing Plans</a>
+        <a href="#">Recruiter Login</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Hire India.com | All Rights Reserved</p>
+      <p>Made with ❤️ in India</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Auth Check
+function checkAuth(){
+  const user = JSON.parse(localStorage.getItem('hi_user') || 'null');
+  if(user){
+    document.getElementById('headerActions').style.display='none';
+    const um = document.getElementById('userMenu');
+    um.style.display='flex';
+    document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
+    document.getElementById('userName').textContent = user.name.split(' ')[0];
+    // hide mobile login/register
+    const ml = document.getElementById('mobileLogin');
+    const mr = document.getElementById('mobileRegister');
+    if(ml) ml.style.display='none';
+    if(mr) mr.style.display='none';
+  }
+}
+
+function logout(){
+  localStorage.removeItem('hi_user');
+  showToast('Logged out successfully 👋', 'info');
+  setTimeout(()=>location.reload(), 1000);
+}
+
+function showToast(msg, type='success'){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(()=>t.className='toast', 3000);
+}
+
+function applyForJob(title){
+  const user = JSON.parse(localStorage.getItem('hi_user') || 'null');
+  if(!user){
+    showToast('Please login to apply for jobs', 'info');
+    setTimeout(()=>window.location='login.html', 1500);
+    return;
+  }
+  let apps = JSON.parse(localStorage.getItem('hi_applications') || '[]');
+  const already = apps.find(a=>a.job===title && a.email===user.email);
+  if(already){ showToast('Already applied for this job!', 'info'); return; }
+  apps.push({job:title, email:user.email, date: new Date().toLocaleString(), status:'Under Review'});
+  localStorage.setItem('hi_applications', JSON.stringify(apps));
+  showToast(`Applied for ${title} ✅`, 'success');
+}
+
+function heroSearch(){
+  const q = document.getElementById('heroSearch').value.trim();
+  const l = document.getElementById('heroLocation').value.trim();
+  const params = new URLSearchParams();
+  if(q) params.set('q', q);
+  if(l) params.set('loc', l);
+  window.location = 'job.html?' + params.toString();
+}
+
+function quickSearch(term){
+  window.location = `job.html?q=${encodeURIComponent(term)}`;
+}
+
+function toggleMobileNav(){
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', checkAuth);
+</script>
+</body>
+</html>

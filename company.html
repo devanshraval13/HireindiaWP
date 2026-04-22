@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Companies | Hire India</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--blue:#1a56db;--blue-light:#3b82f6;--accent:#f59e0b;--accent2:#10b981;--bg:#f8faff;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text)}
+a{text-decoration:none;color:inherit}
+
+header{background:#fff;padding:0 60px;height:70px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 20px rgba(0,0,0,.06);}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--navy)}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+nav{display:flex;align-items:center;gap:6px}
+nav a{color:var(--muted);font-weight:500;padding:8px 14px;border-radius:8px;transition:.2s;font-size:15px}
+nav a:hover,nav a.active{color:var(--blue);background:#eff6ff}
+.header-actions{display:flex;align-items:center;gap:10px}
+.btn-outline{border:1.5px solid var(--blue);color:var(--blue);padding:8px 20px;border-radius:25px;font-weight:600;font-size:14px;transition:.2s}
+.btn-outline:hover{background:var(--blue);color:#fff}
+.btn-primary{background:var(--blue);color:#fff;padding:9px 22px;border-radius:25px;font-weight:600;font-size:14px;transition:.2s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.user-menu{display:none;align-items:center;gap:10px}
+.user-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.logout-btn{color:var(--muted);font-size:13px;cursor:pointer;padding:6px 12px;border-radius:8px;transition:.2s;border:1px solid var(--border);background:none}
+.logout-btn:hover{color:#ef4444;border-color:#ef4444}
+
+.page-hero{background:linear-gradient(135deg,var(--navy),#1a3a6b);padding:60px;color:#fff}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;margin-bottom:8px}
+.page-hero p{color:rgba(255,255,255,0.75);font-size:16px;margin-bottom:28px}
+.search-wrap{display:flex;gap:12px;max-width:600px}
+.search-wrap input{flex:1;padding:14px 18px;border:none;border-radius:12px;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;background:rgba(255,255,255,0.95)}
+.search-wrap button{background:var(--accent);color:var(--navy);border:none;padding:14px 28px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;font-family:'Syne',sans-serif;transition:.2s;white-space:nowrap}
+.search-wrap button:hover{background:#d97706}
+
+.filter-tabs{padding:20px 60px;background:#fff;border-bottom:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap}
+.tab{padding:8px 18px;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;border:1.5px solid var(--border);color:var(--muted);background:none}
+.tab:hover,.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+.companies-section{padding:40px 60px;max-width:1400px;margin:0 auto}
+.companies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.company-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.3s;cursor:pointer}
+.company-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,86,219,0.12);border-color:var(--blue-light)}
+.company-header{padding:24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px}
+.company-logo-big{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.company-header-info h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.company-header-info p{font-size:13px;color:var(--muted)}
+.company-body{padding:20px 24px}
+.company-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.company-stat{text-align:center;padding:10px;background:#f8faff;border-radius:10px}
+.company-stat h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px}
+.company-stat p{font-size:11px;color:var(--muted)}
+.company-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.company-tag{background:#f1f5f9;color:var(--muted);padding:4px 10px;border-radius:20px;font-size:12px}
+.company-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border)}
+.company-rating{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--text)}
+.company-rating span{color:var(--accent)}
+.view-jobs-btn{background:var(--blue);color:#fff;border:none;padding:9px 20px;border-radius:20px;cursor:pointer;font-weight:600;font-size:13px;font-family:'DM Sans',sans-serif;transition:.2s}
+.view-jobs-btn:hover{background:#1447be}
+.hiring-badge{background:#f0fdf4;color:var(--accent2);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid #bbf7d0}
+
+.section-label{color:var(--blue);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--navy);margin-bottom:30px}
+
+footer{background:var(--navy);color:rgba(255,255,255,0.5);text-align:center;padding:24px;font-size:13px;margin-top:50px}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:500;z-index:9999;transform:translateY(100px);opacity:0;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{border-left:4px solid var(--accent2)}
+
+@media(max-width:768px){
+  header{padding:0 20px}
+  .page-hero{padding:40px 20px}
+  .page-hero h1{font-size:28px}
+  .filter-tabs{padding:16px 20px}
+  .companies-section{padding:24px 20px}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo"><div class="logo-icon">H</div>Hire India</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="job.html">Jobs</a>
+    <a href="company.html" class="active">Companies</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-actions" id="headerActions">
+    <a href="login.html" class="btn-outline">Login</a>
+    <a href="signup.html" class="btn-primary">Register</a>
+  </div>
+  <div class="user-menu" id="userMenu">
+    <div class="user-avatar" id="userAvatar"></div>
+    <span style="font-weight:600;font-size:14px" id="userName"></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="page-hero">
+  <h1>Top Hiring Companies 🏢</h1>
+  <p>Discover 10,000+ companies actively hiring across India's top industries</p>
+  <div class="search-wrap">
+    <input type="text" id="companySearch" placeholder="Search company name or industry..." oninput="filterCompanies()">
+    <button onclick="filterCompanies()">🔍 Search</button>
+  </div>
+</div>
+
+<div class="filter-tabs">
+  <button class="tab active" onclick="filterByType('all', this)">All Companies</button>
+  <button class="tab" onclick="filterByType('tech', this)">💻 Technology</button>
+  <button class="tab" onclick="filterByType('startup', this)">🚀 Startups</button>
+  <button class="tab" onclick="filterByType('mnc', this)">🌐 MNC</button>
+  <button class="tab" onclick="filterByType('ecomm', this)">🛒 E-Commerce</button>
+  <button class="tab" onclick="filterByType('fintech', this)">💳 Fintech</button>
+</div>
+
+<div class="companies-section">
+  <p class="section-label">✨ Featured Employers</p>
+  <h2 class="section-title">Companies Actively Hiring</h2>
+  <div class="companies-grid" id="companiesGrid"></div>
+</div>
+
+<footer>© 2026 Hire India.com | All Rights Reserved</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const COMPANIES = [
+  {id:1,name:"Google",logo:"🔵",industry:"Technology",type:"mnc tech",hq:"Bengaluru",openings:124,employees:"5,000+",rating:4.8,tags:["Frontend","Backend","AI/ML","Cloud"],color:"#4285f4"},
+  {id:2,name:"Amazon",logo:"🟡",industry:"E-Commerce & Cloud",type:"mnc ecomm tech",hq:"Hyderabad",openings:98,employees:"10,000+",rating:4.5,tags:["Logistics","SDE","Data","PM"],color:"#ff9900"},
+  {id:3,name:"Microsoft",logo:"🟦",industry:"Software & Cloud",type:"mnc tech",hq:"Bengaluru",openings:82,employees:"8,000+",rating:4.7,tags:["Azure","Dotnet","SDE","Design"],color:"#00a4ef"},
+  {id:4,name:"Infosys",logo:"🟣",industry:"IT Services",type:"mnc tech",hq:"Pune",openings:215,employees:"30,000+",rating:4.2,tags:["Java","Testing","Cloud","SAP"],color:"#007cc5"},
+  {id:5,name:"Swiggy",logo:"🟠",industry:"Food Tech",type:"startup ecomm",hq:"Remote",openings:67,employees:"2,000+",rating:4.4,tags:["Product","Design","Engineering","Ops"],color:"#fc8019"},
+  {id:6,name:"TCS",logo:"🔷",industry:"Enterprise IT",type:"mnc tech",hq:"PAN India",openings:320,employees:"50,000+",rating:4.1,tags:["Java","SAP","Testing","Cloud"],color:"#00a0dc"},
+  {id:7,name:"Zomato",logo:"🍴",industry:"Food & Delivery",type:"startup ecomm",hq:"Bengaluru",openings:54,employees:"3,000+",rating:4.3,tags:["Product","Growth","Data","Backend"],color:"#e23744"},
+  {id:8,name:"Razorpay",logo:"💳",industry:"Fintech",type:"startup fintech",hq:"Bengaluru",openings:43,employees:"1,500+",rating:4.6,tags:["Payments","Backend","React","DevOps"],color:"#3395ff"},
+  {id:9,name:"Flipkart",logo:"🛒",industry:"E-Commerce",type:"mnc ecomm",hq:"Delhi",openings:89,employees:"15,000+",rating:4.3,tags:["SDE","Product","Analytics","Supply Chain"],color:"#2874f0"},
+  {id:10,name:"CRED",logo:"💜",industry:"Fintech",type:"startup fintech",hq:"Pune",openings:38,employees:"1,000+",rating:4.5,tags:["iOS","Android","Backend","ML"],color:"#1c1c1c"},
+  {id:11,name:"Ola",logo:"🚗",industry:"Mobility Tech",type:"startup tech",hq:"Bengaluru",openings:71,employees:"4,000+",rating:4.0,tags:["ML","Maps","Backend","Mobile"],color:"#00b300"},
+  {id:12,name:"Meesho",logo:"🛍️",industry:"Social Commerce",type:"startup ecomm",hq:"Remote",openings:52,employees:"2,500+",rating:4.4,tags:["Growth","Product","Engineering","Data"],color:"#9b27af"},
+];
+
+let activeType = 'all';
+
+function checkAuth(){
+  const user = JSON.parse(localStorage.getItem('hi_user') || 'null');
+  if(user){
+    document.getElementById('headerActions').style.display='none';
+    const um = document.getElementById('userMenu');
+    um.style.display='flex';
+    document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
+    document.getElementById('userName').textContent = user.name.split(' ')[0];
+  }
+}
+
+function logout(){
+  localStorage.removeItem('hi_user');
+  location.reload();
+}
+
+function showToast(msg, type='success'){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(()=>t.className='toast', 3000);
+}
+
+function filterByType(type, el){
+  activeType = type;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  filterCompanies();
+}
+
+function filterCompanies(){
+  const q = document.getElementById('companySearch').value.toLowerCase();
+  let filtered = COMPANIES.filter(c=>{
+    if(activeType !== 'all' && !c.type.includes(activeType)) return false;
+    if(q && !c.name.toLowerCase().includes(q) && !c.industry.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  renderCompanies(filtered);
+}
+
+function renderCompanies(list){
+  const grid = document.getElementById('companiesGrid');
+  if(list.length === 0){
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)"><div style="font-size:48px;margin-bottom:14px">🔍</div><h3 style="font-family:\'Syne\',sans-serif">No companies found</h3></div>';
+    return;
+  }
+  grid.innerHTML = list.map(c=>`
+    <div class="company-card">
+      <div class="company-header">
+        <div class="company-logo-big" style="background:${c.color}22">${c.logo}</div>
+        <div class="company-header-info">
+          <h3>${c.name}</h3>
+          <p>${c.industry} • ${c.hq}</p>
+        </div>
+        <span class="hiring-badge">Hiring</span>
+      </div>
+      <div class="company-body">
+        <div class="company-stats">
+          <div class="company-stat"><h4>${c.openings}+</h4><p>Openings</p></div>
+          <div class="company-stat"><h4>${c.employees}</h4><p>Employees</p></div>
+          <div class="company-stat"><h4>${c.rating}⭐</h4><p>Rating</p></div>
+        </div>
+        <div class="company-tags">${c.tags.map(t=>`<span class="company-tag">${t}</span>`).join('')}</div>
+        <div class="company-footer">
+          <div class="company-rating"><span>★</span> ${c.rating} / 5.0</div>
+          <button class="view-jobs-btn" onclick="viewJobs('${c.name}')">View ${c.openings}+ Jobs →</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function viewJobs(company){
+  window.location = `job.html?q=${encodeURIComponent(company)}`;
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  checkAuth();
+  renderCompanies(COMPANIES);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register | Hire India</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--blue:#1a56db;--blue-light:#3b82f6;--accent:#f59e0b;--accent2:#10b981;--bg:#f8faff;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+
+header{background:#fff;padding:0 60px;height:70px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);box-shadow:0 1px 20px rgba(0,0,0,.06);}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--navy)}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+
+.page-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
+.page-wrap::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,0.08) 0%,transparent 70%);border-radius:50%;}
+
+.auth-container{display:grid;grid-template-columns:1fr 1.2fr;max-width:980px;width:100%;background:var(--card);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,0.12);overflow:hidden;position:relative;z-index:1}
+
+.auth-left{background:linear-gradient(135deg,#065f46,#047857);padding:50px 40px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.auth-left-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.3);color:var(--accent);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:24px;width:fit-content}
+.auth-left h2{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;line-height:1.2;margin-bottom:16px}
+.auth-left p{color:rgba(255,255,255,0.75);font-size:15px;line-height:1.7;margin-bottom:28px}
+.auth-step{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+.step-num{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:14px;flex-shrink:0;margin-top:2px}
+.auth-step h5{font-size:15px;font-weight:700;margin-bottom:3px}
+.auth-step span{font-size:13px;color:rgba(255,255,255,0.65)}
+
+.auth-right{padding:44px 40px;overflow-y:auto;max-height:100vh}
+.auth-right h3{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.auth-right .subtitle{color:var(--muted);font-size:15px;margin-bottom:28px}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:14px;font-weight:600;color:var(--text);margin-bottom:7px}
+.form-group input,.form-group select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:12px;outline:none;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--text);background:#f8faff;transition:.2s;}
+.form-group input:focus,.form-group select:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(26,86,219,0.08);}
+.form-group input.error{border-color:#ef4444}
+.error-msg{color:#ef4444;font-size:12px;margin-top:4px;display:none}
+.success-msg{color:var(--accent2);font-size:12px;margin-top:4px;display:none}
+
+.password-wrapper{position:relative}
+.password-wrapper input{padding-right:46px}
+.toggle-password{position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--muted);font-size:18px;background:none;border:none;padding:0}
+
+.strength-bar{height:4px;border-radius:4px;background:var(--border);margin-top:6px;overflow:hidden}
+.strength-fill{height:100%;border-radius:4px;transition:.3s;width:0}
+.strength-label{font-size:12px;margin-top:4px;font-weight:600}
+
+.role-selector{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.role-option{border:1.5px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:.2s;text-align:center}
+.role-option:hover{border-color:var(--blue-light);background:#eff6ff}
+.role-option.selected{border-color:var(--blue);background:#eff6ff}
+.role-option input{display:none}
+.role-icon{font-size:24px;margin-bottom:6px}
+.role-title{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:2px}
+.role-desc{font-size:12px;color:var(--muted)}
+
+.terms-check{display:flex;align-items:flex-start;gap:10px;margin-bottom:18px}
+.terms-check input{width:16px;height:16px;margin-top:2px;cursor:pointer;accent-color:var(--blue)}
+.terms-check label{font-size:13px;color:var(--muted);cursor:pointer;line-height:1.5}
+.terms-check label a{color:var(--blue);font-weight:600}
+
+.submit-btn{width:100%;padding:15px;background:var(--blue);color:#fff;border:none;border-radius:25px;font-weight:700;font-size:16px;font-family:'Syne',sans-serif;cursor:pointer;transition:.3s;margin-bottom:16px;}
+.submit-btn:hover{background:#1447be;transform:translateY(-1px);box-shadow:0 10px 28px rgba(26,86,219,0.35)}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+
+.auth-footer{text-align:center;font-size:14px;color:var(--muted)}
+.auth-footer a{color:var(--blue);font-weight:700}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:500;z-index:9999;transform:translateY(100px);opacity:0;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{border-left:4px solid var(--accent2)}
+.toast.error{border-left:4px solid #ef4444}
+
+footer{background:var(--navy);color:rgba(255,255,255,0.5);text-align:center;padding:20px;font-size:13px}
+
+@media(max-width:768px){
+  header{padding:0 20px}
+  .auth-container{grid-template-columns:1fr}
+  .auth-left{display:none}
+  .auth-right{padding:32px 24px}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">H</div>
+    Hire India
+  </a>
+  <a href="login.html" style="color:var(--blue);font-weight:600;font-size:14px">Already registered? <strong>Login →</strong></a>
+</header>
+
+<div class="page-wrap">
+  <div class="auth-container">
+    <div class="auth-left">
+      <div class="auth-left-tag">🚀 Join Free Today!</div>
+      <h2>Start Your Career Journey</h2>
+      <p>Create your free account in under 2 minutes and unlock thousands of opportunities.</p>
+      <div class="auth-step">
+        <div class="step-num">1</div>
+        <div><h5>Create Your Profile</h5><span>Fill in basic details — takes 2 minutes</span></div>
+      </div>
+      <div class="auth-step">
+        <div class="step-num">2</div>
+        <div><h5>Browse Curated Jobs</h5><span>Access 50,000+ verified openings</span></div>
+      </div>
+      <div class="auth-step">
+        <div class="step-num">3</div>
+        <div><h5>Apply with One Click</h5><span>No uploads needed — your profile speaks</span></div>
+      </div>
+      <div class="auth-step">
+        <div class="step-num">4</div>
+        <div><h5>Get Hired!</h5><span>Average time to first interview: 5 days</span></div>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <h3>Create Your Account ✨</h3>
+      <p class="subtitle">Join 5 million professionals on Hire India</p>
+
+      <p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">I am a...</p>
+      <div class="role-selector" id="rolePicker">
+        <label class="role-option selected" onclick="selectRole('Job Seeker', this)">
+          <div class="role-icon">👤</div>
+          <div class="role-title">Job Seeker</div>
+          <div class="role-desc">Looking for opportunities</div>
+        </label>
+        <label class="role-option" onclick="selectRole('Employer', this)">
+          <div class="role-icon">🏢</div>
+          <div class="role-title">Employer</div>
+          <div class="role-desc">Hiring talented people</div>
+        </label>
+      </div>
+      <input type="hidden" id="role" value="Job Seeker">
+
+      <form id="signupForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="firstName" placeholder="Ravi">
+            <p class="error-msg" id="firstNameErr">Required (min 2 chars)</p>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="lastName" placeholder="Kumar">
+            <p class="error-msg" id="lastNameErr">Required</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+          <p class="error-msg" id="emailErr">Enter a valid email address</p>
+          <p class="success-msg" id="emailOk">✓ Looks good!</p>
+        </div>
+
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10">
+          <p class="error-msg" id="mobileErr">Enter valid 10-digit number</p>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Create a strong password" autocomplete="new-password" oninput="checkStrength(this.value)">
+            <button type="button" class="toggle-password" onclick="togglePass('password',this)">👁</button>
+          </div>
+          <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+          <p class="strength-label" id="strengthLabel" style="color:var(--muted)"></p>
+          <p class="error-msg" id="passErr">Password must be at least 6 characters</p>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="confirmPass" placeholder="Re-enter your password" autocomplete="new-password">
+            <button type="button" class="toggle-password" onclick="togglePass('confirmPass',this)">👁</button>
+          </div>
+          <p class="error-msg" id="confirmErr">Passwords do not match</p>
+        </div>
+
+        <div class="terms-check">
+          <input type="checkbox" id="terms">
+          <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a> of Hire India</label>
+        </div>
+        <p class="error-msg" id="termsErr">Please accept the terms to continue</p>
+
+        <button type="submit" class="submit-btn" id="signupBtn">Create My Account 🚀</button>
+        <p class="auth-footer">Already have an account? <a href="login.html">Login here →</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Hire India.com | All Rights Reserved</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+let selectedRole = 'Job Seeker';
+
+function selectRole(role, el){
+  selectedRole = role;
+  document.getElementById('role').value = role;
+  document.querySelectorAll('.role-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function togglePass(id, btn){
+  const inp = document.getElementById(id);
+  if(inp.type==='password'){ inp.type='text'; btn.textContent='🙈'; }
+  else { inp.type='password'; btn.textContent='👁'; }
+}
+
+function checkStrength(val){
+  const fill = document.getElementById('strengthFill');
+  const label = document.getElementById('strengthLabel');
+  let score = 0;
+  if(val.length >= 6) score++;
+  if(val.length >= 10) score++;
+  if(/[A-Z]/.test(val)) score++;
+  if(/[0-9]/.test(val)) score++;
+  if(/[^A-Za-z0-9]/.test(val)) score++;
+  const levels = [
+    {w:'0%', c:'', t:''},
+    {w:'20%', c:'#ef4444', t:'Very Weak'},
+    {w:'40%', c:'#f59e0b', t:'Weak'},
+    {w:'60%', c:'#eab308', t:'Fair'},
+    {w:'80%', c:'#84cc16', t:'Good'},
+    {w:'100%', c:'#10b981', t:'Strong ✓'}
+  ];
+  const l = levels[Math.min(score, 5)];
+  fill.style.width = l.w;
+  fill.style.background = l.c;
+  label.textContent = l.t;
+  label.style.color = l.c;
+}
+
+function showToast(msg, type='success'){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(()=>t.className='toast', 3500);
+}
+
+// Email live check
+document.getElementById('email').addEventListener('blur', function(){
+  const val = this.value.trim();
+  if(val && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){
+    const users = JSON.parse(localStorage.getItem('hi_users') || '[]');
+    if(users.find(u=>u.email===val)){
+      document.getElementById('emailErr').textContent='This email is already registered. Login instead.';
+      document.getElementById('emailErr').style.display='block';
+      document.getElementById('emailOk').style.display='none';
+      this.classList.add('error');
+    } else {
+      document.getElementById('emailOk').style.display='block';
+      document.getElementById('emailErr').style.display='none';
+      this.classList.remove('error');
+    }
+  }
+});
+
+document.getElementById('signupForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  let valid = true;
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const mobile = document.getElementById('mobile').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const confirmPass = document.getElementById('confirmPass').value.trim();
+  const terms = document.getElementById('terms').checked;
+
+  // Reset
+  document.querySelectorAll('.error-msg').forEach(el=>el.style.display='none');
+  document.querySelectorAll('input').forEach(el=>el.classList.remove('error'));
+
+  if(firstName.length < 2){
+    document.getElementById('firstNameErr').style.display='block';
+    document.getElementById('firstName').classList.add('error');
+    valid=false;
+  }
+  if(lastName.length < 1){
+    document.getElementById('lastNameErr').style.display='block';
+    document.getElementById('lastName').classList.add('error');
+    valid=false;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    document.getElementById('emailErr').textContent='Enter a valid email address';
+    document.getElementById('emailErr').style.display='block';
+    document.getElementById('email').classList.add('error');
+    valid=false;
+  }
+  if(!/^[0-9]{10}$/.test(mobile)){
+    document.getElementById('mobileErr').style.display='block';
+    document.getElementById('mobile').classList.add('error');
+    valid=false;
+  }
+  if(password.length < 6){
+    document.getElementById('passErr').style.display='block';
+    document.getElementById('password').classList.add('error');
+    valid=false;
+  }
+  if(password !== confirmPass){
+    document.getElementById('confirmErr').style.display='block';
+    document.getElementById('confirmPass').classList.add('error');
+    valid=false;
+  }
+  if(!terms){
+    document.getElementById('termsErr').style.display='block';
+    valid=false;
+  }
+
+  if(!valid) return;
+
+  const users = JSON.parse(localStorage.getItem('hi_users') || '[]');
+  if(users.find(u=>u.email===email)){
+    document.getElementById('emailErr').textContent='Email already registered. Login instead.';
+    document.getElementById('emailErr').style.display='block';
+    return;
+  }
+
+  const newUser = {
+    id: Date.now(),
+    name: `${firstName} ${lastName}`,
+    firstName, lastName, email, mobile, password,
+    role: selectedRole,
+    joined: new Date().toLocaleDateString(),
+    avatar: firstName.charAt(0).toUpperCase()
+  };
+  users.push(newUser);
+  localStorage.setItem('hi_users', JSON.stringify(users));
+  localStorage.setItem('hi_user', JSON.stringify(newUser));
+
+  const btn = document.getElementById('signupBtn');
+  btn.textContent = 'Creating account...';
+  btn.disabled = true;
+
+  showToast(`Welcome to Hire India, ${firstName}! 🎉`, 'success');
+  setTimeout(()=>window.location='index.html', 1500);
+});
+
+const existing = JSON.parse(localStorage.getItem('hi_user') || 'null');
+if(existing) window.location = 'index.html';
+</script>
+</body>
+</html>

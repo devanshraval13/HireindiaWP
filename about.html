@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us | Hire India</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--blue:#1a56db;--blue-light:#3b82f6;--accent:#f59e0b;--accent2:#10b981;--bg:#f8faff;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text)}
+a{text-decoration:none;color:inherit}
+header{background:#fff;padding:0 60px;height:70px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 20px rgba(0,0,0,.06);}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--navy)}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+nav{display:flex;align-items:center;gap:6px}
+nav a{color:var(--muted);font-weight:500;padding:8px 14px;border-radius:8px;transition:.2s;font-size:15px}
+nav a:hover,nav a.active{color:var(--blue);background:#eff6ff}
+.header-actions{display:flex;align-items:center;gap:10px}
+.btn-outline{border:1.5px solid var(--blue);color:var(--blue);padding:8px 20px;border-radius:25px;font-weight:600;font-size:14px;transition:.2s}
+.btn-outline:hover{background:var(--blue);color:#fff}
+.btn-primary{background:var(--blue);color:#fff;padding:9px 22px;border-radius:25px;font-weight:600;font-size:14px;transition:.2s;border:none;cursor:pointer}
+.user-menu{display:none;align-items:center;gap:10px}
+.user-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.logout-btn{color:var(--muted);font-size:13px;cursor:pointer;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:none;transition:.2s}
+.logout-btn:hover{color:#ef4444;border-color:#ef4444}
+
+/* HERO */
+.about-hero{background:linear-gradient(135deg,var(--navy),#1a3a6b);padding:100px 60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.about-hero::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(59,130,246,0.15) 0%,transparent 60%);border-radius:50%;}
+.about-hero h1{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;margin-bottom:16px;position:relative}
+.about-hero h1 span{color:var(--accent)}
+.about-hero p{font-size:18px;color:rgba(255,255,255,0.75);max-width:700px;margin:0 auto;line-height:1.7;position:relative}
+
+/* SECTIONS */
+section{padding:80px 60px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{color:var(--blue);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--navy);margin-bottom:16px}
+.section-body{font-size:16px;line-height:1.8;color:var(--muted);max-width:800px}
+
+/* WHO WE ARE */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto}
+.who-visual{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:24px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.who-stat{background:#fff;border-radius:16px;padding:24px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.who-stat h3{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--blue);margin-bottom:4px}
+.who-stat p{font-size:13px;color:var(--muted)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:40px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;text-align:center;transition:.3s}
+.stat-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(26,86,219,0.1);border-color:var(--blue-light)}
+.stat-icon{font-size:36px;margin-bottom:16px}
+.stat-card h3{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--blue);margin-bottom:6px}
+.stat-card p{color:var(--muted);font-size:14px}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
+.value-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;transition:.3s;position:relative;overflow:hidden}
+.value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-light))}
+.value-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(26,86,219,0.1)}
+.value-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#eff6ff,#dbeafe);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.value-card h4{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.value-card p{font-size:15px;line-height:1.7;color:var(--muted)}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:40px}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;text-align:center;transition:.3s}
+.team-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.08)}
+.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:28px}
+.team-card h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.team-card .role{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:8px}
+.team-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* CTA */
+.about-cta{background:linear-gradient(135deg,var(--navy),#1a3a6b);padding:80px 60px;text-align:center;color:#fff}
+.about-cta h2{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;margin-bottom:16px}
+.about-cta p{color:rgba(255,255,255,0.75);font-size:17px;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.cta-btn-white{background:#fff;color:var(--navy);padding:14px 32px;border-radius:25px;font-weight:700;font-size:15px;transition:.2s}
+.cta-btn-white:hover{box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+.cta-btn-ghost{border:2px solid rgba(255,255,255,0.4);color:#fff;padding:14px 32px;border-radius:25px;font-weight:700;font-size:15px;transition:.2s}
+.cta-btn-ghost:hover{background:rgba(255,255,255,0.1)}
+
+footer{background:var(--navy);color:rgba(255,255,255,0.5);text-align:center;padding:24px;font-size:13px}
+
+@media(max-width:768px){
+  header{padding:0 20px}
+  .about-hero{padding:60px 20px}
+  .about-hero h1{font-size:36px}
+  section{padding:60px 20px}
+  .who-grid{grid-template-columns:1fr}
+  .about-cta{padding:60px 20px}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo"><div class="logo-icon">H</div>Hire India</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="job.html">Jobs</a>
+    <a href="company.html">Companies</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-actions" id="headerActions">
+    <a href="login.html" class="btn-outline">Login</a>
+    <a href="signup.html" class="btn-primary">Register</a>
+  </div>
+  <div class="user-menu" id="userMenu">
+    <div class="user-avatar" id="userAvatar"></div>
+    <span style="font-weight:600;font-size:14px" id="userName"></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="about-hero">
+  <h1>About <span>Hire India</span></h1>
+  <p>We exist to connect India's best talent with the opportunities they deserve — faster, smarter, and more fairly.</p>
+</div>
+
+<!-- WHO WE ARE -->
+<section style="background:#fff">
+  <div class="who-grid">
+    <div>
+      <p class="section-label">🏢 Our Story</p>
+      <h2 class="section-title">Who We Are</h2>
+      <p class="section-body" style="margin-bottom:20px">Hire India is a modern job portal founded in 2020 with one mission: to make finding meaningful work accessible to every Indian professional, from fresh graduates to senior executives.</p>
+      <p class="section-body">We bridge the gap between talented professionals and top companies across every industry — using smart technology, deep market insight, and a genuine commitment to fair hiring.</p>
+    </div>
+    <div class="who-visual">
+      <div class="who-stat"><h3>2020</h3><p>Founded</p></div>
+      <div class="who-stat"><h3>12</h3><p>Cities Covered</p></div>
+      <div class="who-stat"><h3>500+</h3><p>Team Members</p></div>
+      <div class="who-stat"><h3>India</h3><p>Headquartered</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">📈 Our Impact</p>
+    <h2 class="section-title">Numbers that Matter</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <h3>5M+</h3>
+        <p>Registered Job Seekers</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏢</div>
+        <h3>50K+</h3>
+        <p>Hiring Companies</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💼</div>
+        <h3>200K+</h3>
+        <p>Jobs Posted Monthly</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⭐</div>
+        <h3>98%</h3>
+        <p>Employer Satisfaction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section style="background:#fff">
+  <div class="section-inner">
+    <p class="section-label">❤️ What Drives Us</p>
+    <h2 class="section-title">Our Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h4>Transparency</h4>
+        <p>We believe in honest hiring — clear salaries, real job descriptions, and genuine company reviews. No more bait-and-switch.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💡</div>
+        <h4>Innovation</h4>
+        <p>We continuously evolve our platform with AI-powered matching, smart filters, and instant alerts to keep you ahead.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h4>Inclusivity</h4>
+        <p>We champion equal opportunity for talent across all backgrounds, regions, and levels of experience.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🚀</div>
+        <h4>Efficiency</h4>
+        <p>We respect your time. Our platform is built to get you to the right opportunity in the fewest steps possible.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <h4>Privacy First</h4>
+        <p>Your data belongs to you. We never sell personal information and give you full control over your profile visibility.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <h4>Growth Mindset</h4>
+        <p>We don't just help you get a job — we help you build the career you want, with resources, guides, and community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">👋 The People Behind</p>
+    <h2 class="section-title">Meet Our Leadership</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">A</div>
+        <h4>Devansh Raval </h4>
+        <p class="role">CEO & Co-Founder</p>
+        <p>Ex-LinkedIn, IIT Delhi. Passionate about democratising employment in India.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">P</div>
+        <h4>Yagnik Giri</h4>
+        <p class="role">CTO & Co-Founder</p>
+        <p>Ex-Google, IIT Bombay. Leads product engineering and AI/ML initiatives.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">R</div>
+        <h4>Tirath Momaya</h4>
+        <p class="role">VP - Product</p>
+        <p>Ex-Naukri, XLRI Jamshedpur. Crafts the experience millions of users love.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">S</div>
+        <h4>Rahul Roy</h4>
+        <p class="role">Head of Growth</p>
+        <p>Ex-Swiggy, IIM Ahmedabad. Drives user acquisition and market expansion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="about-cta">
+  <h2>Ready to Join India's Best Job Platform?</h2>
+  <p>Whether you're looking for your dream job or hiring for your team — Hire India has you covered.</p>
+  <div class="cta-btns">
+    <a href="signup.html" class="cta-btn-white">Get Started Free →</a>
+    <a href="contact.html" class="cta-btn-ghost">Contact Us</a>
+  </div>
+</div>
+
+<footer>© 2026 Hire India.com | All Rights Reserved | Made with ❤️ in India</footer>
+
+<script>
+function checkAuth(){
+  const user = JSON.parse(localStorage.getItem('hi_user') || 'null');
+  if(user){
+    document.getElementById('headerActions').style.display='none';
+    const um = document.getElementById('userMenu');
+    um.style.display='flex';
+    document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
+    document.getElementById('userName').textContent = user.name.split(' ')[0];
+  }
+}
+function logout(){
+  localStorage.removeItem('hi_user');
+  location.reload();
+}
+document.addEventListener('DOMContentLoaded', checkAuth);
+</script>
+</body>
+</html>
